@@ -1,0 +1,42 @@
+{
+  "name": "chronicler",
+  "version": "1.0.0",
+  "description": "Utility to auto publish release drafts with merged PRs",
+  "main": "index.js",
+  "scripts": {
+    "test": "ava --verbose",
+    "dev": "./node_modules/nodemon/bin/nodemon.js --inspect ./src/index.js",
+    "start": "node ./src/index.js",
+    "lint": "./node_modules/.bin/eslint ./src ./__tests__",
+    "precommit": "npm run lint && npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/NYTimes/chronicler"
+  },
+  "author": "Yuraima",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NYTimes/chronicler/issues"
+  },
+  "homepage": "https://github.com/NYTimes/chronicler#readme",
+  "devDependencies": {
+    "ava": "1.0.0-beta.6",
+    "babel-eslint": "^8.2.3",
+    "eslint": "^5.0.0",
+    "husky": "^0.14.3",
+    "nodemon": "^1.17.5"
+  },
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "esm": "^3.0.52",
+    "express": "^4.15.3",
+    "moment": "^2.19.4",
+    "axios": "^0.18.0"
+  },
+  "ava": {
+    "require": [
+      "esm"
+    ]
+  }
+}
