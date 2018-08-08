@@ -49,3 +49,6 @@ With Chronicler set up on your environment, you can now set your repo up with We
 7. Under "Which events would you like to trigger this webhook?" check off the "Let me select individual events" option.  This will expand the event options where you should select "Release" and "Pull Request."
 8. Ensure that "Active" is checked off, and click "Add webhook" at the bottom of the form.
 9. Celebrate :tada: You're now ready to start using Chronicler to automate your repository's release notes!
+
+### How to contribute
+Pull requests, issues, and feature requests always welcome! Read the [contributing guide](docs/CONTRIBUTING.md) for information on how to get started.

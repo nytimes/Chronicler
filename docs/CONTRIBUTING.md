@@ -13,11 +13,11 @@ Pull requests are very welcome! Before submitting changes, please follow these g
 
 - Check the open issues and pull requests for existing discussions.
 - Open an issue to discuss a new feature.
-- Write/run tests and the linter.
+- Write/run tests and lint your code.
 - Open a Pull Request.
 
 ## License
-Unless otherwise noted, the Drone-GKE source files are distributed under the Apache 2.0-style license found in the LICENSE file.
+Unless otherwise noted, the Chronicler source files are distributed under the Apache 2.0-style license found in the LICENSE file.
 
 ## Local Development
 
@@ -25,14 +25,20 @@ Unless otherwise noted, the Drone-GKE source files are distributed under the Apa
 Clone the repo and install dependencies.
 
 ```bash
-$  git clone git@github.com:NYTimes/nard-dog
-$  cd nard-dog
+$  git clone https://github.com/NYTimes/Chronicler.git
+$  cd Chronicler
 $  npm install
 ```
 
 ### Setup
 
-#### Setup environment variables
+#### Download ngrok
+To test Chronicler locally with real GitHub Webhook events you'll need to use a tunneling service that creates public URLs to your local environment.  We reccommend using [`ngrok`](https://ngrok.com/).
+
+1. [Download ngrok](https://ngrok.com/download) and move the file to the `chronicler` directory.
+2. Unzip the ngrok file `unzip ./ngrok-file-name.zip`.
+
+#### Environment variables
 There are a few environment variables that need to be set and exported.  These variables should be available from the node.js `process.env` object.
 
 **Variable Name** | **Description** | **Default**
@@ -42,15 +48,9 @@ There are a few environment variables that need to be set and exported.  These v
 `APP_NAME` (optional) | Name of the app to send as the `User-Agent` value in the API requests. | `Chronicler`
 `PORT` (optional) | App port. | `8080`
 
-### Running Locally
+### Running Chronicler Locally
 
-#### Download ngrok
-To test Chronicler locally with real GitHub Webhook events you'll need to use a tunneling service that creates public URLs to your local environment.  We reccommend using [`ngrok`](https://ngrok.com/).
-
-1. [Download ngrok](https://ngrok.com/download) and move the file to the `NARD-Dog` directory.
-2. Unzip the ngrok file `unzip ./ngrok-file-name.zip`.
-
-### Start server
+#### Start server
 To start your enviroment for local testing, you'll need to first start the express server and then ngrok.
 
 1. Run `npm run dev`.
@@ -65,7 +65,7 @@ To start your enviroment for local testing, you'll need to first start the expre
 
 **NOTE** The ngrok "Forwarding" address changes everytime ngrok is started, so you'll need to update it in the repo webhook settings every time you stop/start ngrok.
 
-### Repo Webhooks Settings
+#### Repository Webhook Settings
 With your local development environment ready, you can now set your repo up with the Webhook information needed to communicate with the local environment.
 
 1. From your repo page, click on the "Settings" tab.
@@ -77,3 +77,12 @@ With your local development environment ready, you can now set your repo up with
 7. Under "Which events would you like to trigger this webhook?" check off the "Let me select individual events."  This will expand the event options and you should select "Release" and "Pull Request."
 8. Ensure that "Active" is checked off, and click "Add webhook" at the bottom of the form.
 9. Celebrate :clap: :clap: :clap: You're now ready to start developing and testing your changes locally.
+
+#### Testing Locally
+Anytime a pull request is merged in the repository you set up with your local version of Chronicler a webhook event will be sent to the ngrok endpoint provided.  To test that your changes work as expected you should run through the following cases.
+
+**Use Case** | **Expected Outcome**
+--- | ---
+No release note drafts exist and a pull request is merged | A new release note draft is created that contains the merged pull request title and PR number.  The release note draft should have the title "NEXT RELEASE."
+A release note draft already exists and a pull request is merged | The merged release draft title and PR number are appended to the existing release note draft as an additional list item.
+
