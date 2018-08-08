@@ -86,3 +86,5 @@ Anytime a pull request is merged in the repository you set up with your local ve
 No release note drafts exist and a pull request is merged | A new release note draft is created that contains the merged pull request title and PR number.  The release note draft should have the title "NEXT RELEASE."
 A release note draft already exists and a pull request is merged | The merged release draft title and PR number are appended to the existing release note draft as an additional list item.
 
+#### Tests and Linting
+Chronicler uses the git hooks via the `husky` package to run tests and lint code before each commit.  When making changes to the Chronicler codebase please make sure to lint and write tests against your work.
