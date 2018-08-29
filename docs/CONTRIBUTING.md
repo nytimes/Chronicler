@@ -60,7 +60,9 @@ To start your enviroment for local testing, you'll need to first start the expre
     $  ./ngrok http 8080
     ```
 3. If everything is set up correctly, your node server should be running, and you should see the ngrok console up and running in the window.
-![Image of ngrok console](ngrok.png)
+
+    ![Image of ngrok console](ngrok.png)
+
 4. Make note of the ngrok "Forwarding" address (e.x `https://943c6c27.ngrok.io`) displayed in the console. You'll be using this to set up the Webhook in the repo settings.
 
 **NOTE** The ngrok "Forwarding" address changes everytime ngrok is started, so you'll need to update it in the repo webhook settings every time you stop/start ngrok.
