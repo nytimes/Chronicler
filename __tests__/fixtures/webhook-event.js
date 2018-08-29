@@ -8,7 +8,7 @@ const webhook = {
     merged: true
   },
   repository: {
-    url: 'https://api.github.com/repos/nytm/trex-release-drafts'
+    url: 'https://api.github.com/repos/NYTimes/Chronicler'
   }
 }
 
@@ -16,7 +16,7 @@ export const mockRequest = {
   body: webhook,
   headers: {
     // fake signature to mock request header
-    'x-hub-signature': 'sha1=d0637860fad3e6eb0a13c6c23cf51403d930b710'
+    'x-hub-signature': 'sha1=52c4274a1ade797a06044f73499fd46c0e5d6ecd'
   }
 }
 

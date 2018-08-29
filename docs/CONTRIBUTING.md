@@ -33,7 +33,7 @@ $  npm install
 ### Setup
 
 #### Download ngrok
-To test Chronicler locally with real GitHub Webhook events you'll need to use a tunneling service that creates public URLs to your local environment.  We reccommend using [`ngrok`](https://ngrok.com/).
+To test Chronicler locally with real GitHub Webhook events you'll need to use a tunneling service that creates public URLs to your local environment.  We reccommend using the free tool, [`ngrok`](https://ngrok.com/).
 
 1. [Download ngrok](https://ngrok.com/download) and move the file to the `chronicler` directory.
 2. Unzip the ngrok file `unzip ./ngrok-file-name.zip`.

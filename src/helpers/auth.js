@@ -3,7 +3,10 @@ import crypto from 'crypto'
 const AUTH_HEADER = 'x-hub-signature'
 
 /**
+ * Validate payloads from Github
+ * https://developer.github.com/webhooks/securing/#validating-payloads-from-github
  *
+ * @param req Webhook request object received from GitHub
  */
 const auth = req => {
   const hubSig = req.header(AUTH_HEADER)
