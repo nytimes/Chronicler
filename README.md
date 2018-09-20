@@ -1,8 +1,8 @@
 # Chronicler
-A better way to write your release notes.
 
-## Intro
 Chronicler is an open source node.js app that automates your repo's release notes.  Chronicler will listen for pull request events from GitHub Webhooks.  When a pull request is merged Chronicler will create a new release draft OR edit an existing one with the PR info.  The result is a neatly formatted release note draft listing all PRs merged since your last tagged release.
+
+Read more in the [Times Open blog post](https://open.nytimes.com/open-source-automating-release-notes-in-github-dd08f964465c).
 
 ### How it Works
 Chronicler receives GitHub Webhook events from the repository you hook it up to.  By listening for pull request events, Chronicler can watch for merged PRs and add them to release note drafts.  When a PR is merged Chronicler will either create a new release draft or edit an existing draft.  If a note draft does not already exist a new, untagged draft will be created titled `NEXT RELEASE` with the PR info as the body content.  If a draft does exist it will append the PR to it.  The draft body consists of a list of pull requests with the PR title and number:
