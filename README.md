@@ -1,4 +1,4 @@
-# Chronicler
+# Chronicler ![](https://travis-ci.org/NYTimes/Chronicler.svg?branch=master "Build status")
 
 Chronicler is an open source node.js app that automates your repo's release notes.  Chronicler will listen for pull request events from GitHub Webhooks.  When a pull request is merged Chronicler will create a new release draft OR edit an existing one with the PR info.  The result is a neatly formatted release note draft listing all PRs merged since your last tagged release.
 
