@@ -22,7 +22,7 @@ app.post('/webhooks', (req, res) => {
   }
   githubApp.auth()
 
-  handleWebhookEvent(req.body)
+  return handleWebhookEvent(req.body)
     .then(result => {
       if (result && result.error) {
         return Promise.reject(result.error)
