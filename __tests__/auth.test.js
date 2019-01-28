@@ -1,5 +1,5 @@
 import test from 'ava'
-import auth from '../src/helpers/auth'
+import { auth } from '../src/auth/webhook'
 import { mockRequest } from './fixtures/webhook-event'
 
 // fake request object for auth test

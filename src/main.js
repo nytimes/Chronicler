@@ -1,6 +1,6 @@
 import express from 'express'
 import bodyParser from 'body-parser'
-import auth from './helpers/auth'
+import * as webhook from './auth/webhook'
 import * as githubApp from './auth/githubApp'
 import handleWebhookEvent from './helpers/pr'
 
@@ -16,7 +16,7 @@ app.get('/ping', (req, res) => {
 
 app.post('/webhooks', (req, res) => {
   // authenticate request
-  const authentication = auth(req)
+  const authentication = webhook.auth(req)
   if (authentication.error) {
     return res.status(authentication.error).send(authentication)
   }
