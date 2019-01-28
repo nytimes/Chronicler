@@ -1,6 +1,7 @@
 import express from 'express'
 import bodyParser from 'body-parser'
 import auth from './helpers/auth'
+import * as githubApp from './auth/githubApp'
 import handleWebhookEvent from './helpers/pr'
 
 const app = express()
@@ -19,6 +20,7 @@ app.post('/webhooks', (req, res) => {
   if (authentication.error) {
     return res.status(authentication.error).send(authentication)
   }
+  githubApp.auth()
 
   handleWebhookEvent(req.body)
     .then(result => {

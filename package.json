@@ -28,11 +28,14 @@
     "nodemon": "^1.17.5"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "body-parser": "^1.17.2",
     "esm": "^3.0.52",
     "express": "^4.15.3",
+    "jsonwebtoken": "^8.4.0",
     "moment": "^2.19.4",
-    "axios": "^0.18.0"
+    "proxyquire": "^2.1.0",
+    "sinon": "^7.2.3"
   },
   "ava": {
     "require": [
