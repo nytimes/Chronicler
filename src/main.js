@@ -21,9 +21,14 @@ app.post('/webhooks', async (req, res) => {
   if (authentication.error) {
     return res.status(authentication.error).send(authentication)
   }
-  const appJwt = githubApp.auth()
-  const installationToken = await installation.auth(req, appJwt)
-  const handler = new WebhookHandler(installationToken || process.env.GH_TOKEN)
+  let token
+  if (process.env.AUTH_AS_APP) {
+    const appJwt = githubApp.auth()
+    token = await installation.auth(req, appJwt)
+  } else {
+    token = process.env.GH_TOKEN
+  }
+  const handler = new WebhookHandler(token)
   return handler.handleWebhookEvent(req.body)
     .then(result => {
       if (result && result.error) {
