@@ -6,7 +6,7 @@ let githubApp, signStub, momentStub
 test.beforeEach(() => {
   process.env.APP_IDENTIFIER = 'MOCKED_APP_IDENTIFIER',
   process.env.PRIVATE_KEY = 'MOCKED_PRIVATE_KEY'
-  signStub = sinon.stub()
+  signStub = sinon.stub().returns('jwt123')
   momentStub = {
     unix: sinon.stub()
   }
@@ -22,11 +22,13 @@ test.beforeEach(() => {
 test('calls jwt encode with iat, exp, iss', t => {
   momentStub.unix.onFirstCall().returns(1)
   momentStub.unix.onSecondCall().returns(2)
-  githubApp.auth()
+  t.is(githubApp.auth(), 'jwt123')
 
   t.true(signStub.calledWith({
+    iss: 'MOCKED_APP_IDENTIFIER',
     iat: 1,
     exp: 2,
-    iss: 'MOCKED_APP_IDENTIFIER'
-  }, 'MOCKED_PRIVATE_KEY'))
+  }, 'MOCKED_PRIVATE_KEY', {
+    algorithm: 'RS256'
+  }))
 })
