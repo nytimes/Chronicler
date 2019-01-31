@@ -25,14 +25,13 @@ Chronicler is a simple express.js app that receives GitHub Webhook events via it
 ### Environment Variables
 The following variables must be set up and available to Chronicler via the node.js `process.env` object.
 It is possible to run both as a Github app or as an individual user.
-To run as a Github app: SET AUTH_AS_APP=true and PRIVATE_KEY, APP_IDENTIFIER and SECRET to their respective values. GH_TOKEN can then be omitted.
+To run as a Github app: SET AUTH_AS_APP=true, APP_IDENTIFIER and SECRET to their respective values. GH_TOKEN can then be omitted. **Also make sure to set the private key for the app (listed under basic information about the app) in /run/secrets/private-key**
 To run the service as a user: SET GH_TOKEN and SECRET to their respective values. AUTH_AS_APP and PRIVATE_KEY, APP_IDENTIFIER can then be omitted.
 
 **Variable Name** | **Description** | **Default**
 --- | --- | :---:
 `SECRET` (required) | The GitHub Webhook secret passed along with every Webhooks request.  Allows your app to authenticate the request and make sure the request is coming from a trusted source.  Generate a [random string with high entropy](https://developer.github.com/webhooks/securing/#setting-your-secret-token) for your secure secret or create one using an online [generator](https://randomkeygen.com/). | -
 `AUTH_AS_APP` (required if github app)| Whether to authenticate as a Github app | false
-`PRIVATE_KEY` (required if github app)| The private key belonging to the Github app, listed under basic information about the app | -
 `APP_IDENTIFIER` (required if github app)| The unique identifier for the Github app, listed under basic information about the app | -
 `GH_TOKEN` (required if set as a user)| The Github [personal access token](https://github.com/settings/tokens) to use for this app.  Used for authentication when making calls to the GitHub API. | -
 `APP_NAME` (optional) | Name of the app to send as the `User-Agent` value in the API requests. | `Chronicler`
