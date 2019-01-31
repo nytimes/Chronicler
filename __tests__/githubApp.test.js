@@ -4,8 +4,10 @@ import proxyquire from 'proxyquire'
 
 let githubApp, signStub, momentStub
 test.beforeEach(() => {
-  process.env.APP_IDENTIFIER = 'MOCKED_APP_IDENTIFIER',
-  process.env.PRIVATE_KEY = 'MOCKED_PRIVATE_KEY'
+  process.env.APP_IDENTIFIER = 'MOCKED_APP_IDENTIFIER'
+  const fs = {
+    readFileSync: sinon.stub().returns('MOCKED_PRIVATE_KEY')
+  }
   signStub = sinon.stub().returns('jwt123')
   momentStub = {
     unix: sinon.stub()
@@ -15,7 +17,8 @@ test.beforeEach(() => {
     'jsonwebtoken': {
       sign: signStub
     },
-    'moment': () => momentStub
+    'moment': () => momentStub,
+    'fs': fs
   })
 })
 
