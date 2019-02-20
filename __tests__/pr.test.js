@@ -40,8 +40,8 @@ test('getSingleReleaseUrl returns the github release url for a given release id'
   t.is(getSingleReleaseUrl(pr, draft), expected)
 })
 
-test('getPrDesc should return the formatted description for a pull request with title and number', t => {
-  const expected = '- Update README.md (#16)'
+test('getPrDesc should return the formatted description for a pull request with title and number and author', t => {
+  const expected = '- Update README.md (#16) Booger'
 
   t.is(getPrDesc(pr), expected)
 })
@@ -56,7 +56,7 @@ test('getPrData should return a pull request object with the repository url', t 
 
 test('updateReleaseDraft should append the pull request title and number to existing draft', t => {
   const expect =
-    '- Title Change (#4) - Give Props (#3) - Test permissions (#6) - Another Permissions test (#7) - Update README.md (#10) - Update README.md (#12) - Update README.md (#13) - Update README.md (#14) - Update README.md (#15) - Update README.md (#16) - Update README.md (#16) - Add webhook url to readme (#5)\n- Update README.md (#16)'
+    '- Title Change (#4) - Give Props (#3) - Test permissions (#6) - Another Permissions test (#7) - Update README.md (#10) - Update README.md (#12) - Update README.md (#13) - Update README.md (#14) - Update README.md (#15) - Update README.md (#16) - Update README.md (#16) - Add webhook url to readme (#5)\n- Update README.md (#16) Booger'
   t.is(updateReleaseDraft(pr, draft), expect)
 })
 

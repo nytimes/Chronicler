@@ -58,7 +58,7 @@ export const getReleasesUrl = pr =>
  *
  * @returns {String}
  */
-export const getPrDesc = ({ number, title }) => `- ${title} (#${number})`
+export const getPrDesc = ({ number, title, user }) => `- ${title} (#${number}) ${user.login}`
 
 /**
  * Update the existing release draft with the new pull request

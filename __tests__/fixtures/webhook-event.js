@@ -5,7 +5,10 @@ const webhook = {
     title: 'Update README.md',
     body: '',
     merged_at: '2018-03-23T21:57:30Z',
-    merged: true
+    merged: true,
+    user: {
+      login: 'Booger'
+    }
   },
   repository: {
     url: 'https://api.github.com/repos/NYTimes/Chronicler'
