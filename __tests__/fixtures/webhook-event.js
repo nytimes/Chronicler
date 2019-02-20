@@ -19,7 +19,7 @@ export const mockRequest = {
   body: webhook,
   headers: {
     // fake signature to mock request header
-    'x-hub-signature': 'sha1=52c4274a1ade797a06044f73499fd46c0e5d6ecd'
+    'x-hub-signature': 'sha1=0885db6c82d3741dfeec285acf3566e20b8db6f9'
   }
 }
 
