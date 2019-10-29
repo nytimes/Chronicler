@@ -5,3 +5,5 @@ script: npm run precommit
 branches:
   only:
     - master
+after_failure:
+  - "cat /home/travis/.npm/_logs/*-debug.log"
