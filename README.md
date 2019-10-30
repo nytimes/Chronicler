@@ -22,20 +22,40 @@ Draft Example
 ## Getting Started
 Chronicler is a simple express.js app that receives GitHub Webhook events via its `/webhooks` route.  You'll need to clone and set the app up on a server or cloud service (e.x. Google Cloud Platform, AWS, Digital Ocean) to use it for your own projects.
 
-### Setup
-
-#### Environment Variables
+### Environment Variables
 The following variables must be set up and available to Chronicler via the node.js `process.env` object.
+It is possible to run both as a Github app or as an individual user.
+To run as a Github app: SET AUTH_AS_APP=true, APP_IDENTIFIER and SECRET to their respective values. GH_TOKEN can then be omitted. **Also make sure to set the private key for the app (listed under basic information about the app) in /run/secrets/private-key**
+To run the service as a user: SET GH_TOKEN and SECRET to their respective values. AUTH_AS_APP and PRIVATE_KEY, APP_IDENTIFIER can then be omitted.
 
 **Variable Name** | **Description** | **Default**
 --- | --- | :---:
-`GH_TOKEN` | The Github [personal access token](https://github.com/settings/tokens) to use for this app.  Used for authentication when making calls to the GitHub API. | -
-`SECRET` | The GitHub Webhook secret passed along with every Webhooks request.  Allows your app to authenticate the request and make sure the request is coming from a trusted source.  Generate a [random string with high entropy](https://developer.github.com/webhooks/securing/#setting-your-secret-token) for your secure secret or create one using an online [generator](https://randomkeygen.com/). | -
+`SECRET` (required) | The GitHub Webhook secret passed along with every Webhooks request.  Allows your app to authenticate the request and make sure the request is coming from a trusted source.  Generate a [random string with high entropy](https://developer.github.com/webhooks/securing/#setting-your-secret-token) for your secure secret or create one using an online [generator](https://randomkeygen.com/). | -
+`AUTH_AS_APP` (required if github app)| Whether to authenticate as a Github app | false
+`APP_IDENTIFIER` (required if github app)| The unique identifier for the Github app, listed under basic information about the app | -
+`GH_TOKEN` (required if set as a user)| The Github [personal access token](https://github.com/settings/tokens) to use for this app.  Used for authentication when making calls to the GitHub API. | -
 `APP_NAME` (optional) | Name of the app to send as the `User-Agent` value in the API requests. | `Chronicler`
 `PORT` (optional) | App port. | `8080`
 
+### Setup as Github app
+
+#### Creating the app
+A Github app can be created on both a user and an organization. The latter is recommended when working together with a team whose members might change. Thus the service is uncoupled from a specific user that might leave.
+To set it up, go to https://github.com/organizations/`<organization>`/settings/apps and create new. Fill out the required fields and give it the following permissions:
+
+1. Repository contents **Read & Write**
+2. Repository metadata **Read**
+3. Pull requests **Read**
+    - Subscribe to events: Pull Requests
+
+When created, go to the general-tab for the app and collect set the **Webhook secret (SECRET)** the **PRIVATE_KEY** and **APP_IDENTIFIER** to be set in your environment.
+
+Lastly. Install the app on your organization/repository through the organization/repository settings
+
+### Setup as User
+
 ##### A Note on Personal Access Tokens
-Chronicler requires a personal access token (PAT) to create or edit a release draft via the GitHub API.  PATs are tied to a user's account.  For GitHub teams or organizations using Chronicler we reccommend creating a dedicated GitHub account that owns the PAT.  By creating the PAT with a dedicated GitHub account instead of with a team member's account, you can avoid interuptions to Chronicler if the team member leaves or is removed from the organization.
+When setting up Chronicler as a user it requires a personal access token (PAT) to create or edit a release draft via the GitHub API.  PATs are tied to a user's account.  For GitHub teams or organizations using Chronicler we reccommend creating a dedicated GitHub account that owns the PAT.  By creating the PAT with a dedicated GitHub account instead of with a team member's account, you can avoid interuptions to Chronicler if the team member leaves or is removed from the organization.
 
 To generate a new PAT for Chronicler, go to your [account settings](https://github.com/settings/tokens/new).  Add a "token description" (e.x "chronicler-app") and grant it `repo` scope.
 

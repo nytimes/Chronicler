@@ -38,4 +38,4 @@ const auth = req => {
   }
 }
 
-export default auth
+export { auth }

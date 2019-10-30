@@ -1,10 +1,12 @@
 import express from 'express'
 import bodyParser from 'body-parser'
-import auth from './helpers/auth'
-import handleWebhookEvent from './helpers/pr'
+import * as webhook from './auth/webhook'
+import * as githubApp from './auth/githubApp'
+import * as installation from './auth/installation'
+import WebhookHandler from './helpers/pr'
 
 const app = express()
-const PORT = process.env.NODE_PORT || 8080
+const PORT = process.env.PORT || 8080
 
 app.use(bodyParser.json())
 
@@ -13,14 +15,21 @@ app.get('/ping', (req, res) => {
   return res.status(200).send('OK')
 })
 
-app.post('/webhooks', (req, res) => {
+app.post('/webhooks', async (req, res) => {
   // authenticate request
-  const authentication = auth(req)
+  const authentication = webhook.auth(req)
   if (authentication.error) {
     return res.status(authentication.error).send(authentication)
   }
-
-  handleWebhookEvent(req.body)
+  let token
+  if (process.env.AUTH_AS_APP) {
+    const appJwt = githubApp.auth()
+    token = await installation.auth(req, appJwt)
+  } else {
+    token = process.env.GH_TOKEN
+  }
+  const handler = new WebhookHandler(token)
+  return handler.handleWebhookEvent(req.body)
     .then(result => {
       if (result && result.error) {
         return Promise.reject(result.error)
