@@ -3,7 +3,7 @@ import moment from 'moment'
 
 // github needs a user agent in the request, setting as app name
 const userAgent = {
-  'User-Agent': process.env.APP_NAME
+  'User-Agent': process.env.APP_NAME || 'Chronicler'
 }
 
 /**
