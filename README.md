@@ -32,7 +32,7 @@ The following variables must be set up and available to Chronicler via the node.
 `GH_TOKEN` | The Github [personal access token](https://github.com/settings/tokens) to use for this app.  Used for authentication when making calls to the GitHub API. | -
 `SECRET` | The GitHub Webhook secret passed along with every Webhooks request.  Allows your app to authenticate the request and make sure the request is coming from a trusted source.  Generate a [random string with high entropy](https://developer.github.com/webhooks/securing/#setting-your-secret-token) for your secure secret or create one using an online [generator](https://randomkeygen.com/). | -
 `APP_NAME` (optional) | Name of the app to send as the `User-Agent` value in the API requests. | `Chronicler`
-`PORT` (optional) | App port. | `8080`
+`NODE_PORT` (optional) | App port. | `8080`
 
 ##### A Note on Personal Access Tokens
 Chronicler requires a personal access token (PAT) to create or edit a release draft via the GitHub API.  PATs are tied to a user's account.  For GitHub teams or organizations using Chronicler we reccommend creating a dedicated GitHub account that owns the PAT.  By creating the PAT with a dedicated GitHub account instead of with a team member's account, you can avoid interuptions to Chronicler if the team member leaves or is removed from the organization.
