@@ -1,6 +1,6 @@
 import test from 'ava'
-import webhookData from './fixtures/webhook-event'
-import { drafts } from './fixtures/releases'
+import webhookData from '../fixtures/webhook-event'
+import { drafts } from '../fixtures/releases'
 import {
   isTooOld,
   getReleasesUrl,

@@ -21,18 +21,18 @@
   },
   "homepage": "https://github.com/NYTimes/chronicler#readme",
   "devDependencies": {
-    "ava": "1.0.0-beta.6",
-    "babel-eslint": "^8.2.3",
-    "eslint": "^5.0.0",
+    "ava": "^2.4.0",
+    "babel-eslint": "^8.2.6",
+    "eslint": "^5.16.0",
     "husky": "^0.14.3",
-    "nodemon": "^1.17.5"
+    "nodemon": "^1.19.4"
   },
   "dependencies": {
-    "body-parser": "^1.17.2",
-    "esm": "^3.0.52",
-    "express": "^4.15.3",
-    "moment": "^2.19.4",
-    "axios": "^0.18.0"
+    "axios": "^0.18.1",
+    "body-parser": "^1.19.0",
+    "esm": "^3.2.25",
+    "express": "^4.17.1",
+    "moment": "^2.24.0"
   },
   "ava": {
     "require": [

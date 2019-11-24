@@ -1,6 +1,6 @@
 import test from 'ava'
 import auth from '../src/helpers/auth'
-import { mockRequest } from './fixtures/webhook-event'
+import { mockRequest } from '../fixtures/webhook-event'
 
 // fake request object for auth test
 function Request(req) {
