@@ -8,8 +8,7 @@
     "dev": "./node_modules/nodemon/bin/nodemon.js --inspect ./src/index.js",
     "start": "node ./src/index.js",
     "lint": "./node_modules/.bin/eslint ./src ./__tests__",
-    "precommit": "npm run lint && npm test",
-    "debug": "./start.sh"
+    "precommit": "npm run lint && npm test"
   },
   "repository": {
     "type": "git",
