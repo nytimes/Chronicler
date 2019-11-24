@@ -30,6 +30,9 @@ const auth = req => {
     if (safe) {
       return true
     }
+
+    // if safe condition fails then enter catch
+    throw new Error('auth failed')
   } catch (error) {
     return {
       error: 403,
