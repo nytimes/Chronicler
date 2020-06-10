@@ -164,7 +164,7 @@ export const handleReleasesResponse = (response, pr) => {
 export const handleWebhookEvent = webhookData => {
   const pr = getPrData(webhookData)
 
-  if (pr.merged && !isTooOld(pr.merged_at)) {
+  if (pr.merged && !isTooOld(pr.merged_at) && pr.base.ref == 'master') {
     // release request options
     const options = {
       method: 'GET',

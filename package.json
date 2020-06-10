@@ -28,11 +28,12 @@
     "nodemon": "^1.17.5"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "body-parser": "^1.17.2",
+    "dotenv": "^6.2.0",
     "esm": "^3.0.52",
     "express": "^4.15.3",
-    "moment": "^2.19.4",
-    "axios": "^0.18.0"
+    "moment": "^2.19.4"
   },
   "ava": {
     "require": [

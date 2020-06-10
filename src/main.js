@@ -1,7 +1,10 @@
+import dotenv from 'dotenv'
 import express from 'express'
 import bodyParser from 'body-parser'
 import auth from './helpers/auth'
 import handleWebhookEvent from './helpers/pr'
+
+dotenv.config()
 
 const app = express()
 const PORT = process.env.NODE_PORT || 8080
