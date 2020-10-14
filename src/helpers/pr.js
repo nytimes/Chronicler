@@ -2,8 +2,9 @@ import axios from 'axios'
 import moment from 'moment'
 
 // github needs a user agent in the request, setting as app name
-const userAgent = {
-  'User-Agent': process.env.APP_NAME || 'Chronicler'
+const requestHeaders = {
+  'User-Agent': process.env.APP_NAME || 'Chronicler',
+  'Authorization': `token ${process.env.GH_TOKEN}
 }
 
 /**
@@ -41,7 +42,7 @@ export const getPrData = ({ pull_request, repository }) => ({
  * @returns {String}
  */
 export const getSingleReleaseUrl = (pr, release) =>
-  `${pr.repoUrl}/releases/${release.id}?access_token=${process.env.GH_TOKEN}`
+  `${pr.repoUrl}/releases/${release.id}`
 
 /**
  * Get the releases url for the github repo passed
@@ -118,7 +119,7 @@ export const createReleaseDraft = pr => {
   const options = {
     method: 'POST',
     url: getReleasesUrl(pr),
-    headers: userAgent,
+    headers: requestHeaders,
     data: newRelease
   }
 
