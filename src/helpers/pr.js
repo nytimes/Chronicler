@@ -4,7 +4,7 @@ import moment from 'moment'
 // github needs a user agent in the request, setting as app name
 const requestHeaders = {
   'User-Agent': process.env.APP_NAME || 'Chronicler',
-  'Authorization': `token ${process.env.GH_TOKEN}
+  'Authorization': `token ${process.env.GH_TOKEN}`
 }
 
 /**
@@ -41,17 +41,15 @@ export const getPrData = ({ pull_request, repository }) => ({
  *
  * @returns {String}
  */
-export const getSingleReleaseUrl = (pr, release) =>
-  `${pr.repoUrl}/releases/${release.id}`
+export const getSingleReleaseUrl = (pr, release) => `${pr.repoUrl}/releases/${release.id}`
 
 /**
  * Get the releases url for the github repo passed
- * @param {String} pull_request pull request object
+ * @param {Object} pr pull request object
  *
  * @returns {String}
  */
-export const getReleasesUrl = pr =>
-  `${pr.repoUrl}/releases?access_token=${process.env.GH_TOKEN}`
+export const getReleasesUrl = pr => `${pr.repoUrl}/releases`
 
 /**
  * Get the formatted pull request description to add to the release draft.
@@ -80,7 +78,7 @@ export const editReleaseDraft = (release, pr) => {
   const options = {
     method: 'PATCH',
     url: getSingleReleaseUrl(pr, release),
-    headers: userAgent,
+    headers: requestHeaders,
     data: {
       body: updateReleaseDraft(pr, release) // setting to the updated body with new line
     }
@@ -170,7 +168,7 @@ export const handleWebhookEvent = webhookData => {
     const options = {
       method: 'GET',
       url: getReleasesUrl(pr),
-      headers: userAgent
+      headers: requestHeaders
     }
 
     // make request to releases endpoint

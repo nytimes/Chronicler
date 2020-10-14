@@ -28,14 +28,14 @@ test('isTooOld returns false if PR was merged within 5 minutes', t => {
 
 test('getReleasesUrl returns the url for the github repo releases endpoint', t => {
   const expected =
-    'https://api.github.com/repos/NYTimes/Chronicler/releases?access_token=MOCK_TOKEN'
+    'https://api.github.com/repos/NYTimes/Chronicler/releases'
 
   t.is(getReleasesUrl(pr), expected)
 })
 
 test('getSingleReleaseUrl returns the github release url for a given release id', t => {
   const expected =
-    'https://api.github.com/repos/NYTimes/Chronicler/releases/9797693?access_token=MOCK_TOKEN'
+    'https://api.github.com/repos/NYTimes/Chronicler/releases/9797693'
 
   t.is(getSingleReleaseUrl(pr, draft), expected)
 })
