@@ -35,11 +35,13 @@ The following variables must be set up and available to Chronicler via the node.
 `NODE_PORT` (optional) | App port. | `8080`
 
 ##### A Note on Personal Access Tokens
-Chronicler requires a personal access token (PAT) to create or edit a release draft via the GitHub API.  PATs are tied to a user's account.  For GitHub teams or organizations using Chronicler we reccommend creating a dedicated GitHub account that owns the PAT.  By creating the PAT with a dedicated GitHub account instead of with a team member's account, you can avoid interuptions to Chronicler if the team member leaves or is removed from the organization.
+Chronicler requires a personal access token (PAT) to create or edit a release draft via the GitHub API.  PATs are tied to a user's account.  For GitHub teams or organizations using Chronicler we recommend creating a dedicated GitHub account that owns the PAT.  By creating the PAT with a dedicated GitHub account instead of with a team member's account, you can avoid interruptions to Chronicler if the team member leaves or is removed from the organization.
 
 To generate a new PAT for Chronicler, go to your [account settings](https://github.com/settings/tokens/new).  Add a "token description" (e.x "chronicler-app") and grant it `repo` scope.
 
 ![Image of PAT access scope](docs/pat-scope.png)
+
+If your organization enforces [SAML SSO](https://docs.github.com/en/free-pro-team@latest/github/setting-up-and-managing-organizations-and-teams/enforcing-saml-single-sign-on-for-your-organization), you'll need to enable it for the PAT on [this](https://github.com/settings/tokens) page.
 
 #### Enabling Webhooks for your Repository
 With Chronicler set up on your environment, you can now set your repo up with Webhooks.
