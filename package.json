@@ -2,7 +2,7 @@
   "name": "chronicler",
   "version": "1.0.0",
   "description": "Utility to auto publish release drafts with merged PRs",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
     "test": "ava --verbose",
     "dev": "./node_modules/nodemon/bin/nodemon.js --inspect ./src/index.js",

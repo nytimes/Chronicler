@@ -3,7 +3,7 @@ import bodyParser from 'body-parser'
 import auth from './helpers/auth'
 import handleWebhookEvent from './helpers/pr'
 
-const app = express()
+export const app = express()
 const PORT = process.env.NODE_PORT || 8080
 
 app.use(bodyParser.json())
@@ -35,6 +35,8 @@ app.post('/webhooks', (req, res) => {
     })
 })
 
-app.listen(PORT, () => {
-  console.log(`listening on port ${PORT}`)
-})
+export function start(){
+  app.listen(PORT, () => {
+    console.log(`listening on port ${PORT}`)
+  })
+}
