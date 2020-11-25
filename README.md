@@ -56,5 +56,20 @@ With Chronicler set up on your environment, you can now set your repo up with We
 8. Ensure that "Active" is checked off, and click "Add webhook" at the bottom of the form.
 9. Celebrate :tada: You're now ready to start using Chronicler to automate your repository's release notes!
 
+### Deploy to Google Cloud Functions
+Cloud Functions are a cheap and easy way to run Chronicler.
+
+To deploy from command line:
+``` shell
+GH_TOKEN=<SET_TOKEN_HERE>
+SECRET=<SET_SECRET_HERE>
+PROJECT=<SET_PROJECT_HERE>
+
+gcloud functions deploy chronicler \
+--runtime nodejs12 --trigger-http --allow-unauthenticated \
+--set-env-vars GH_TOKEN="$GH_TOKEN",SECRET="$SECRET" \
+--project "$PROJECT"
+```
+
 ### How to contribute
 Pull requests, issues, and feature requests always welcome! Read the [contributing guide](docs/CONTRIBUTING.md) for information on how to get started.
