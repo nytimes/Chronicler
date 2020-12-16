@@ -74,3 +74,4 @@ gcloud functions deploy chronicler \
 ### How to contribute
 Pull requests, issues, and feature requests always welcome! Read the [contributing guide](docs/CONTRIBUTING.md) for information on how to get started.
 test1
+test2-branch1
