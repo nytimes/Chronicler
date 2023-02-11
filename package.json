@@ -21,7 +21,7 @@
   },
   "homepage": "https://github.com/NYTimes/chronicler#readme",
   "devDependencies": {
-    "ava": "^2.4.0",
+    "ava": "^5.2.0",
     "babel-eslint": "^8.2.6",
     "eslint": "^5.16.0",
     "husky": "^0.14.3",
